@@ -13,5 +13,10 @@ body {
   font-family: 'JetBrains Mono', monospace;
   margin: 0;
   padding: 0;
-  
+  overflow-x: hidden;
+  background: #020202;
+}
+
+html {
+  scroll-behavior: smooth;
 }

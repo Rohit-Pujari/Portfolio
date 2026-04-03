@@ -114,9 +114,25 @@ const Particles: React.FC<ParticlesProps> = ({
     const container = containerRef.current;
     if (!container) return;
 
-    const renderer = new Renderer({ depth: false, alpha: true });
+    const isCompactDevice =
+      window.matchMedia("(max-width: 768px)").matches ||
+      window.matchMedia("(pointer: coarse)").matches;
+
+    if (isCompactDevice) {
+      return;
+    }
+
+    let renderer: Renderer;
+
+    try {
+      renderer = new Renderer({ depth: false, alpha: true });
+    } catch {
+      return;
+    }
+
     const gl = renderer.gl;
-    container.appendChild(gl.canvas);
+    const canvas = gl.canvas as HTMLCanvasElement;
+    container.appendChild(canvas);
     gl.clearColor(0, 0, 0, 0);
 
     const camera = new Camera(gl, { fov: 15 });
@@ -228,11 +244,12 @@ const Particles: React.FC<ParticlesProps> = ({
         container.removeEventListener("mousemove", handleMouseMove);
       }
       cancelAnimationFrame(animationFrameId);
-      if (container.contains(gl.canvas)) {
-        container.removeChild(gl.canvas);
+      if (container.contains(canvas)) {
+        container.removeChild(canvas);
       }
     };
   }, [
+    particleColors,
     particleCount,
     particleSpread,
     speed,
