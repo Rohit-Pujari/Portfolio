@@ -72,7 +72,7 @@ function Contact() {
               Send email
             </a>
             <a
-              href="https://drive.google.com/file/d/1Sd9jTVKypF59hzVjP4cbsUV9yxEIqH7I/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1v02TT4bbcscW-gDqd2rXxu_S2m0PLPWt/"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
